@@ -1,6 +1,6 @@
 # COMP3170 - Week 3: 2D Transformations
 
-In today's project, you will be writing your own Matrix methods for moving, rotating and scaling an object in 2D space. In future weeks, we'll be using the built-in Matrix methods from JOML ([documentation here](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html)), but we'd like you to understand how they operate. Use the documentation for clues!
+In today's project, you will be using Matrix transformations to translate, rotae and scale an object in 2D space. Your understanding of the theory behind Matrix transformations will help you figure out how they operate.
 
 ### Remember to fetch and pull the most recent version of the COMP3170 LWJGL Library!
 
@@ -12,20 +12,25 @@ Today's repo contains four files:
 
 If you run the code as is, it should draw the plane without any transformation:
 
-![An imageo of a magenta and blue plane on a white background](images/initialplane.png)
+![An image of a magenta and blue plane on a white background](images/initialplane.png)
 
-## Complete the matrix code
+## Understand JOML Matrix4fs
 
-The Plane class defines three static methods:
-* `translationMatrix()`
-* `rotationMatrix()`
-* `scaleMatrix()`
+We now want to transform the Matrix, changing its translation, its rotation and its scale. We can do so using the Matrix4f class. Take a look at the [documentation](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html) and note down which methods would be useful for:
 
-Each of these methods writes the specified kind of matrix form into a pre-allocated destination matrix. You will want to use these methods to create your model matrix. 
+* Changing the plane's location by a certain amount relative to its current location.
+* Set the plane's location to another spot, regardless of where it currently is.
+* Changing the plane's rotation by a certain amount relative to its current rotation.
+* Set the plane's rotation to another direction, regardless of where it is currently pointing.
+* Changing the plane's size by a certain amount relative to its current size.
+* Set the plane's size to another amount, regardless of how big it currently is.
+* Reset the matrix to a "neutral" form.
 
-The code for `translationMatrix()` has been provided. Complete the other two methods.
+Share your results as instructed by your instructor.
 
 ## Add a model matrix 
+
+To apply transformations, we must first create a model matrix for the plane.
 
 In `vertex.glsl`: Add code to the vertex shader to allow a model matrix to be passed as a uniform. Use this code to transform the vertex before writing it to `gl_Position`.
 
