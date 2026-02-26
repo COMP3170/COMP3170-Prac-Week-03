@@ -15,9 +15,9 @@ If you run the code as is, it should draw the plane without any transformation:
 
 ## Understand JOML Matrix4fs
 
-We now want to transform the Matrix, changing its translation, its rotation and its scale. We can do so using the Matrix4f class. Take a look at the [documentation](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html) and note down which methods would be useful for:
+We now want to transform the Matrix, changing its translation, its rotation and its scale. We can do so using JOML's `Matrix4f` class. Take a look at the [documentation](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html) and note down which methods would be useful for:
 
-* Reset the matrix to a "neutral" form.
+* Resetting the matrix to a "neutral" form.
 
 ### Translation:
 * Changing the plane's location by a certain amount relative to its coordinate space.
@@ -68,4 +68,4 @@ Following the example in lectures for adding and using `deltaTime`, update the c
 This movement requires the plane to be flying towards its own "forward" direction. How might you change your code to keep it rotating, but instead have it fly straight upwards and off the screen?
 
 ## Seperate scene and plane code
-As you may have noticed in the demo code, we're now moving to having our objects seperate from the scene class. See if you can refactor today's prac so the Plane is its own object, which the scene then instantiates. First, identify what should "belong" to the Plane class, and what should belong to the Scene class. Your instructor may ask you to perform this as the whole class or as groups.
+As you may have noticed in the pre-recorded and live lecture code, we're now moving to having our objects seperate from the scene class. See if you can refactor today's code so the Plane is its own object, which the scene then instantiates. First, identify what should "belong" to the Plane class, and what should belong to the Scene class. Your instructor may ask you to perform this as the whole class or as groups.
