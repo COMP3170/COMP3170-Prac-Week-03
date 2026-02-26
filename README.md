@@ -1,5 +1,4 @@
 # COMP3170 - Week 3: 2D Transformations
-
 In today's project, you will be using Matrix transformations to translate, rotae and scale an object in 2D space. Your understanding of the theory behind Matrix transformations will help you figure out how they operate.
 
 ### Remember to fetch and pull the most recent version of the COMP3170 LWJGL Library!
@@ -19,11 +18,11 @@ If you run the code as is, it should draw the plane without any transformation:
 We now want to transform the Matrix, changing its translation, its rotation and its scale. We can do so using the Matrix4f class. Take a look at the [documentation](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html) and note down which methods would be useful for:
 
 * Changing the plane's location by a certain amount relative to its current location.
-* Set the plane's location to another spot, regardless of where it currently is.
-* Changing the plane's rotation by a certain amount relative to its current rotation.
-* Set the plane's rotation to another direction, regardless of where it is currently pointing.
+* Set the plane's location to another spot, scrubbing other transformations.
+* Changing the plane's rotation by a certain amount relative to its current rotation around the Z axis.
+* Set the plane's rotation to another direction around the Z axis, scrubbing other transformations.
 * Changing the plane's size by a certain amount relative to its current size.
-* Set the plane's size to another amount, regardless of how big it currently is.
+* Set the plane's size to another amount, scrubbing other transformations.
 * Reset the matrix to a "neutral" form.
 
 Share your results as instructed by your instructor.
@@ -43,9 +42,13 @@ How would you set the matrix to achieve the following output?
 | a)![](images/neutralplane.png) | b)![](images/rightplane.png)    |
 | c)![](images/smallplane.png)   | d)![](images/cornerplane.png)   |
 
-## Add animaton 
+If you're getting stuck, consider:
+* Are you doing the transformations in the right order (e.g. TRS order)?
 
-Following the example in lectures for adding and using deltaTime, update the code to make the ship move along a circular path like this:
+* Do you have `a_position` and `u_modelMatrix` around the right way in the vertex shader?
+
+## Add animaton 
+Following the example in lectures for adding and using `deltaTime`, update the code to make the ship move along a circular path like this:
 
 |                              |                               |
 | ---------------------------- | ----------------------------- |
@@ -58,10 +61,5 @@ Following the example in lectures for adding and using deltaTime, update the cod
     * Make the plane rotate on the spot.
     * Add forward motion in the plane’s local coordinate space.
 
-## To receive a mark for today, show your demonstator:
-* Your matrix methods.
-* Your model matrix in your vertex shader.
-* Your plane flying in a circle.
-
-## Bonus: Seperate scene and plane code
-As you may have noticed in the demo code, we're now moving to having our objects seperate from the scene class. See if you can refactor today's prac so the Plane is its own object, which the scene then instantiates.
+## Seperate scene and plane code
+As you may have noticed in the demo code, we're now moving to having our objects seperate from the scene class. See if you can refactor today's prac so the Plane is its own object, which the scene then instantiates. First, identify what should "belong" to the Plane class, and what should belong to the Scene class. Your instructor may ask you to perform this as the whole class or as groups.
