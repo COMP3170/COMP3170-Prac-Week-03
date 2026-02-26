@@ -77,83 +77,19 @@ public class Scene {
 			// @formatter:on
 
 		indexBuffer = GLBuffers.createIndexBuffer(indices);
-
 	}
 
 	public void draw() {
-		
 		shader.enable();
+
 		// set the attributes
 		shader.setAttribute("a_position", vertexBuffer);
 		shader.setAttribute("a_colour", colourBuffer);
 
 		// draw using index buffer
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer);
-		
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		glDrawElements(GL_TRIANGLES, indices.length, GL_UNSIGNED_INT, 0);
 
 	}
-
-	/**
-	 * Set the destination matrix to a translation matrix. Note the destination
-	 * matrix must already be allocated.
-	 * 
-	 * @param tx   Offset in the x direction
-	 * @param ty   Offset in the y direction
-	 * @param dest Destination matrix to write into
-	 * @return
-	 */
-
-	public static Matrix4f translationMatrix(float tx, float ty, Matrix4f dest) {
-		// clear the matrix to the identity matrix
-		dest.identity();
-
-		//     [ 1 0 0 tx ]
-		// T = [ 0 1 0 ty ]
-	    //     [ 0 0 0 0  ]
-		//     [ 0 0 0 1  ]
-
-		// Perform operations on only the x and y values of the T vec. 
-		// Leaves the z value alone, as we are only doing 2D transformations.
-		
-		dest.m30(tx);
-		dest.m31(ty);
-
-		return dest;
-	}
-
-	/**
-	 * Set the destination matrix to a rotation matrix. Note the destination matrix
-	 * must already be allocated.
-	 *
-	 * @param angle Angle of rotation (in radians)
-	 * @param dest  Destination matrix to write into
-	 * @return
-	 */
-
-	public static Matrix4f rotationMatrix(float angle, Matrix4f dest) {
-
-		// TODO: Your code here
-
-		return dest;
-	}
-
-	/**
-	 * Set the destination matrix to a scale matrix. Note the destination matrix
-	 * must already be allocated.
-	 *
-	 * @param sx   Scale factor in x direction
-	 * @param sy   Scale factor in y direction
-	 * @param dest Destination matrix to write into
-	 * @return
-	 */
-
-	public static Matrix4f scaleMatrix(float sx, float sy, Matrix4f dest) {
-
-		// TODO: Your code here
-
-		return dest;
-	}
-
 }

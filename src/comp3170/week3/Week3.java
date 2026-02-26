@@ -15,7 +15,6 @@ import comp3170.Window;
 public class Week3 implements IWindowListener {
 
 	private Window window;
-	private Shader shader;
 	
 	final private File DIRECTORY = new File("src/comp3170/week3"); 
 	
@@ -25,36 +24,22 @@ public class Week3 implements IWindowListener {
 	
 	public Week3() throws OpenGLException  {
 		
-		// create window with title, size, and a listener (this)
-		window = new Window("Week 3 prac", width, height, this);
-		
-		// sets the window as resizable
-		window.setResizable(true);
-		// start running the window
-		window.run();
+		window = new Window("Week 3 prac", width, height, this);	// create window with title, size, and a listener (this)
+		window.setResizable(true);	// sets the window as resizable
+		window.run();	// start running the window
 	}
 	
 	@Override
 	public void init() {
-		
 		new ShaderLibrary(DIRECTORY);
-		// set the background colour to white
-		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);	
-		
-		// create the scene
-		scene = new Scene();
-		
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);	// set the background colour to white
+		scene = new Scene();	// create the scene
 	}
-
 
 	@Override
 	public void draw() {
-
-        // clear the colour buffer
-		glClear(GL_COLOR_BUFFER_BIT);	
-		
-		scene.draw();
-	    
+		glClear(GL_COLOR_BUFFER_BIT);	// clear the colour buffer
+		scene.draw();	    
 	}
 
 	@Override
@@ -62,19 +47,13 @@ public class Week3 implements IWindowListener {
 		this.width = width;
 		this.height = height;
 		glViewport(0,0,width,height);
-		
 	}
 	
 	@Override
 	public void close() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public static void main(String[] args) throws IOException, OpenGLException{
 		new Week3();
 	}
-
-	
-	
 }
