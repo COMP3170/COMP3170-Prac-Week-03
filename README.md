@@ -17,18 +17,26 @@ If you run the code as is, it should draw the plane without any transformation:
 
 We now want to transform the Matrix, changing its translation, its rotation and its scale. We can do so using the Matrix4f class. Take a look at the [documentation](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html) and note down which methods would be useful for:
 
-* Changing the plane's location by a certain amount relative to its current location.
-* Set the plane's location to another spot, scrubbing other transformations.
-* Changing the plane's rotation by a certain amount relative to its current rotation around the Z axis.
-* Set the plane's rotation to another direction around the Z axis, scrubbing other transformations.
-* Changing the plane's size by a certain amount relative to its current size.
-* Set the plane's size to another amount, scrubbing other transformations.
 * Reset the matrix to a "neutral" form.
+
+### Translation:
+* Changing the plane's location by a certain amount relative to its coordinate space.
+* Changing the plane's location by a certain amount relative to the world's coordinate space.
+* Set the plane's location to another spot, scrubbing other transformations.
+
+### Rotation:
+* Changing the plane's rotation by a certain amount relative to its coordinate space around the Z axis.
+* Changing the plane's rotation by a certain amount relative to the world's coordinate space around the Z axis.
+* Set the plane's rotation to another direction around the Z axis, scrubbing other transformations.
+
+### Scale:
+* Changing the plane's size by a certain amount relative to its coordinate space.
+* Changing the plane's size by a certain amount relative to the world's coordinate space.
+* Set the plane's size to another amount, scrubbing other transformations.
 
 Share your results as instructed by your instructor.
 
 ## Add a model matrix 
-
 To apply transformations, we must first create a model matrix for the plane.
 
 In `vertex.glsl`: Add code to the vertex shader to allow a model matrix to be passed as a uniform. Use this code to transform the vertex before writing it to `gl_Position`.
@@ -55,11 +63,9 @@ Following the example in lectures for adding and using `deltaTime`, update the c
 | a)![](images/flyingplane1.png) | b)![](images/flyingplane2.png)    |
 | c)![](images/flyingplane3.png)   | d)![](images/flyingplane4.png)   |
 
-### Hints:
-* Initialise the plane with its starting position, angle and size.
-* On every frame:
-    * Make the plane rotate on the spot.
-    * Add forward motion in the plane’s local coordinate space.
+<b>Hint: You'll want to set the plane's transformations with a starting position, angle and size. Then apply other transformations on each frame.</b>
+
+This movement requires the plane to be flying towards its own "forward" direction. How might you change your code to keep it rotating, but instead have it fly straight upwards and off the screen?
 
 ## Seperate scene and plane code
 As you may have noticed in the demo code, we're now moving to having our objects seperate from the scene class. See if you can refactor today's prac so the Plane is its own object, which the scene then instantiates. First, identify what should "belong" to the Plane class, and what should belong to the Scene class. Your instructor may ask you to perform this as the whole class or as groups.
